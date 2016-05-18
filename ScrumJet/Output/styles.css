@@ -1,0 +1,176 @@
+﻿body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    display: inline-block;
+    width: 680px;
+}
+
+#controls {
+    background-color: white;
+    border-left: 1px gray solid;
+    border-top: 1px gray solid;
+    box-shadow: black 0 0 2px;
+    bottom: 0;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+}
+
+    #controls button {
+        font-size: 12px;
+        margin: 5px 10px;
+        width: 100px;
+    }
+
+.card-container {
+    float: left;
+    width: 25%;
+}
+
+.card {
+    border: 3px #adadad solid;
+    display: inline-block;
+    margin: 8px 10px;
+    height: 140px;
+    width: 140px;
+    position: relative;
+    text-align: left;
+    -webkit-print-color-adjust: exact;
+}
+
+    .card:hover:after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        content: "";
+        background-color: rgba(0, 0, 255, 0.20);
+        cursor: pointer;
+    }
+
+.card-heading {
+    background-color: #adadad;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 30px;
+    text-align: center;
+}
+
+    .card-heading input {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .card-heading h2 {
+        font-size: 0.7em;
+        margin: 0.5em;
+        white-space: nowrap;
+    }
+
+.card-body {
+    overflow: hidden;
+    padding: 0.5em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    bottom: 15px;
+}
+
+    .card-body p {
+        font-size: 0.7em;
+        margin: 0;
+    }
+
+    .card-body .effort {
+        bottom: 0;
+        color: #cccccc;
+        font-size: 6em;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        z-index: -1;
+    }
+
+.card-footer {
+    height: 12px;
+    bottom: 0;
+    font-size: 0.7em;
+    left: 0;
+    padding: 0.2em 0.4em;
+    position: absolute;
+    right: 0;
+}
+
+    .card-footer .id {
+        display: inline-block;
+        position: absolute;
+        left: 4px;
+    }
+
+    .card-footer .parentid {
+        display: inline-block;
+        position: absolute;
+        right: 2px;
+    }
+
+@media print {
+    div {
+        page-break-inside: avoid;
+    }
+
+    input {
+        display: none;
+    }
+
+    .card.exclude {
+        display: none;
+    }
+
+    #controls {
+        display: none;
+    }
+}
+
+.card-productbacklogitem {
+    border-color: #3399ff;
+}
+
+    .card-productbacklogitem .card-heading {
+        background-color: #3399ff;
+    }
+
+.card-development {
+    border-color: #ffcc00;
+}
+
+    .card-development .card-heading {
+        background-color: #ffcc00;
+    }
+
+.card-testing {
+    border-color: #59955C;
+}
+
+    .card-testing .card-heading {
+        background-color: #59955C;
+    }
+
+.card-bug {
+    border-color: #ff2b2b;
+}
+
+    .card-bug .card-heading {
+        background-color: #ff2b2b;
+    }

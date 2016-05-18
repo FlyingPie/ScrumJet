@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ScrumJet - Cards done the hacky way!</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        @foreach (var wi in Model.WorkItems)
+        {
+            <div class="card-container">
+                <div class="card card-@wi.Type.Replace(" ", "").ToLower() card-@wi.Activity.ToLower()">
+                    <div class="card-heading">
+                        @{
+                            string title = !string.IsNullOrEmpty(wi.Activity) ? wi.Activity : wi.Type;
+                        }
+
+                        <input type="checkbox" checked="checked" />
+
+                        <h2 class="title">@title</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="description">@wi.Name</p>
+                        @if (wi.Effort > 0)
+                        {
+                            <span class="effort">@wi.Effort</span>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <span class="id">Id: <strong>@wi.Id</strong></span>
+
+                        @if (wi.ParentId > 0)
+                        {
+                            <span class="parentid">Parent: <strong>@wi.ParentId</strong></span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div id="controls">
+            <div>
+                <button id="btn-include-all" type="button">Include all</button>
+            </div>
+            <div>
+                <button id="btn-exclude-all" type="button">Exclude all</button>
+            </div>
+            <div>
+                <button id="btn-print" type="button">Print</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
