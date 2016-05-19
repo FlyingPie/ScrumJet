@@ -22,18 +22,17 @@ namespace ScrumJet
             var configContent = File.ReadAllText(configFile);
             var config = JsonConvert.DeserializeObject<Configuration>(configContent);
 
-            //var workItems = TfsQuery.GetWorkItems(config.Server, config.ProjectCollection, config.AreaPath, config.IterationPath);
+            var workItems = TfsQuery.GetWorkItems(config.Server, config.ProjectCollection, config.AreaPath, config.IterationPath);
 
             //var fields = workItems[0].Fields.Cast<Microsoft.TeamFoundation.WorkItemTracking.Client.Field>().Select(f => new { f.Name, f.Value }).ToList();
 
-            //var vm = new ViewModel();
-            //vm.Initialize(workItems);
+            var vm = new ViewModel();
+            vm.Initialize(workItems);
 
-            var vm = TestViewModel.GetTestViewModel();
+            //var vm = TestViewModel.GetTestViewModel();
 
             vm.WorkItems = vm.WorkItems
-                .OrderBy(wi => wi.ParentId)
-                .ThenBy(wi => wi.Id)
+                .OrderBy(wi => wi.ParentId != 0 ? wi.ParentId : wi.Id)
                 .ToList();
 
             // Razor stuff
