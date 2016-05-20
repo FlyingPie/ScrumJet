@@ -24,8 +24,6 @@ namespace ScrumJet
 
             var workItems = TfsQuery.GetWorkItems(config.Server, config.ProjectCollection, config.AreaPath, config.IterationPath);
 
-            //var fields = workItems[0].Fields.Cast<Microsoft.TeamFoundation.WorkItemTracking.Client.Field>().Select(f => new { f.Name, f.Value }).ToList();
-
             var vm = new ViewModel();
             vm.Initialize(workItems);
 
@@ -40,7 +38,7 @@ namespace ScrumJet
 
             var r = Engine.Razor.RunCompile(template, "templateKey", typeof(ViewModel), vm);
 
-            File.WriteAllText(@"Output\index.html", r);
+            File.WriteAllText(@"index.html", r);
         }
     }
 }
